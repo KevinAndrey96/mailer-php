@@ -38,6 +38,61 @@ $.post("Mailer.php",
 	To : "xxx@xxx.com"
 });
 */
+
+//PHP para realizar la petición
+
+/*
+$Texto="
+<p>Hola, $firstname $lastname</p>
+<br>
+<p>Se ha completado con éxito tu registro.</p>
+<br>
+<br>
+<p>Te recordamos los datos para inicio de sesión a continuación, tu usuario estará en modo de espera mientras uno de nuestros administradores aprueba tu registro.</p>
+<p>Información:</p>
+<table border='0'>
+    <tbody>
+        <tr>
+            <td>Usuario:</td>
+            <th>$username</th>
+        </tr>
+        <tr>
+            <td>Contrasena:</td>
+            <th>$password</th>
+        </tr>
+        
+    </tbody>
+</table>
+<br>
+<p>Cordialmente.</p>
+<br>
+<br>
+<p><strong>example</strong></p>
+    ";
+
+
+$Host="mail.example.com";
+$From="no-responder@example.com";
+$Password="REDACTED";
+$Business="Example";
+$Web="https://example.com";
+$Subject="Registro de asesor éxitoso";
+$Message=$Texto;
+$To=$email;
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL,"https://example.com/Citas/Mailer.php");
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "Host=$Host&From=$From&Password=$Password&Business=$Business&Web=$Web&Subject=$Subject&Message=".$Message."&To=$To");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$remote_server_output = curl_exec ($ch);
+curl_close ($ch);
+
+
+*/
+
+
+
 	$mail = new PHPMailer;
 	$mail->isSMTP();
 	$mail->SMTPDebug = 0;
