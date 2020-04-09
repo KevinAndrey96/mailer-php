@@ -24,3 +24,23 @@ $.post("Mailer.php",
 	To : "xxx@xxx.com"
 });
 ```
+
+#PHP para realizar la petición
+
+```PHP
+$Host="mail.xxx.com";
+$From="xxx@xxx.com";
+$Password="xxx";
+$Business="xxx";
+$Web="https://xxx.com";
+$Subject="xxx";
+$Message="xxx";
+$To="xxx@xxx.com";
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL,"https://XXX.com/Mailer.php");
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "Host=$Host&From=$From&Password=$Password&Business=$Business&Web=$Web&Subject=$Subject&Message=".$Message."&To=$To");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$remote_server_output = curl_exec ($ch);
+curl_close ($ch);
