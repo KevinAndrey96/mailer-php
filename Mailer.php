@@ -71,17 +71,17 @@ $Texto="
     ";
 
 
-$Host="mail.example.com";
-$From="no-responder@example.com";
-$Password="REDACTED";
-$Business="Example";
+$Host="smtp.example.com";
+$From="no-reply@example.com";
+$Password="YOUR_SECURE_SMTP_PASSWORD";
+$Business="Example Healthcare Corp";
 $Web="https://example.com";
-$Subject="Registro de asesor éxitoso";
+$Subject="Registro de usuario exitoso";
 $Message=$Texto;
 $To=$email;
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,"https://example.com/Citas/Mailer.php");
+curl_setopt($ch, CURLOPT_URL,"https://example.com/Mailer.php");
 curl_setopt($ch, CURLOPT_POST, TRUE);
 curl_setopt($ch, CURLOPT_POSTFIELDS, "Host=$Host&From=$From&Password=$Password&Business=$Business&Web=$Web&Subject=$Subject&Message=".$Message."&To=$To");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
